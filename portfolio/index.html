@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="format-detection" content="telephone=no">
+  <title>サイト名 | サイトのキャッチコピー等が入ります。</title>
+  <meta name="description" content="サイトの簡単な説明が入ります。">
+
+  <meta property="og:type" content="">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:site_name" content="">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/images/icon/favicon.ico">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/luminous-basic.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" media="screen and (max-width: 769px)">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" media="screen and (max-width: 769px)"></script>
+
+  <!-- Original -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <header class="l-header">
+    <div class="l-header__top">
+      <h1 class="p-sitelogo">
+        <a href="index.html" class="p-sitelogo__link">
+          Portfolio
+        </a><!-- /.p-sitelogo__link -->
+      </h1><!-- /.p-sitelogo -->
+      <a href="#contact" class="p-header-contact is_pc">
+        お問い合わせ
+      </a><!-- /.p-header-contact -->
+      <div class="p-burger is_sp" id="js-burger">
+        <div class="p-burger__inner">
+          <span class="p-burger__line"></span>
+          <span class="p-burger__line"></span>
+          <span class="p-burger__line"></span>
+        </div><!-- /.p-burger__inner -->
+      </div><!-- /.p-burger -->
+    </div><!-- /.l-header__top -->
+    <div class="c-container">
+      <nav class="p-gnav" id="js-gnav">
+        <ul class="p-gnav__list">
+          <li class="p-gnav__item">
+            <a href="#">ホーム<span>Home</span></a>
+          </li>
+          <li class="p-gnav__item">
+            <a href="#service">サービス<span>Service</span></a>
+          </li>
+          <li class="p-gnav__item">
+            <a href="#merit">メリット<span>Merit</span></a>
+          </li>
+          <li class="p-gnav__item">
+            <a href="#skill">スキル<span>Skill</span></a>
+          </li>
+          <li class="p-gnav__item">
+            <a href="#benefits">特典<span>Benefits</span></a>
+          </li>
+          <!----<li class="p-gnav__item">
+            <a href="#works">制作実績<span>Works</span></a>
+          </li>--->
+          <li class="p-gnav__item">
+            <a href="#about">私について<span>About</span></a>
+          </li>
+          <!---<li class="p-gnav__item">
+            <a href="#voice">クライアント様の声<span>Voice</span></a>
+          </li>---->
+          <li class="p-gnav__item is_sp">
+            <a href="#contact">お問い合わせ<span>Contact</span></a>
+          </li>
+        </ul><!-- /.p-gnav__list -->
+      </nav><!-- /.p-gnav -->
+    </div><!-- /.c-container -->
+  </header><!-- /.l-header -->
+
+  <div id="loadingBg"></div>
+  <div id="loading">
+    <div id="percent"><span id="percent-text"></span>％</div>
+    <div id="gauge"></div>
+  </div>
+
+  <style>
+    #loadingBg {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 99999;
+      width: auto;
+      min-width: 100%;
+      height: auto;
+      min-height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 99999;
+      width: 500px;
+      padding: 50px 20px;
+      background: #ffffff;
+    }
+
+    @media screen and (max-width: 769px) {
+      #loading {
+        width: 90%;
+      }
+    }
+
+    #loading #percent {
+      margin-bottom: 5px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    #loading #gauge {
+      width: 0px;
+      height: 8px;
+      background: #ff0000;
+      border-radius: 999px;
+    }
+  </style>
+
+  <div class="p-black" id="js-black"></div>
+
+  <div id="canvas-wrap">
+    <canvas id="canvas-container"></canvas>
+  </div>
+
+  <section class="l-visual">
+    <div class="l-visual__bg"></div>
+    <div class="l-visual__content">
+      <div class="p-catch js-bound" id="js-catch">
+        <span>お</span><span>客</span><span>様</span><span>の</span><span>笑</span><span>顔</span><span>に</span><span>全</span><span>力</span><span>投</span><span>球</span><span></span><br>
+        <span>「</span><span>笑</span><span>顔</span><span>」</span><span>に</span><span>「</span><span>本</span><span>気</span><span>」</span>
+      </div><!-- /.p-catch -->
+    </div><!-- /.l-visual__content -->
+    <div class="l-visual__img" id="js-visual-img">
+      <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+    </div><!-- /.l-visual__img -->
+  </section><!-- /.l-visual -->
+
+  <main class="l-body">
+    <section class="l-section --mt" id="service">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>SERVICE</span><br>私にできること
+        </h2><!-- /.c-section-title -->
+        <ul class="p-service-list" id="js-service">
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              HTML/CSSコーティング<br>
+            </h3><!-- /.p-service__title -->
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/06.png">
+            </div><!-- /.p-service__icon -->
+            <p class="p-service__price">
+              3,000円〜
+            </p><!-- /.p-service__price -->
+            <div class="p-service__period">
+              10営業日〜
+            </div><!-- /.p-service__period -->
+            <div class="p-service__text">
+              HTML,CSSをベースに、Webサイトを制作します。デザイン・文章などのご要望をヒアリングしながら、忠実にコーティング致します。
+            </div><!-- /.p-service__text -->
+          </li><!-- /.p-service-list__item p-service -->
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              レスポンシブWebデザイン
+            </h3><!-- /.p-service__title -->
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/06.png">
+            </div><!-- /.p-service__icon -->
+            <p class="p-service__price">
+              3,000円〜
+            </p><!-- /.p-service__price -->
+            <div class="p-service__period">
+              10営業日〜
+            </div><!-- /.p-service__period -->
+            <div class="p-service__text">
+              PCサイトだけでなくスマートフォンサイトなど、ご希望のデバイスに合わせたレスポンシブデザインのコーティングを致します。
+            </div><!-- /.p-service__text -->
+          </li><!-- /.p-service-list__item p-service -->
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              LP(ライティングページ)制作
+            </h3><!-- /.p-service__title -->
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/00.png">
+            </div><!-- /.p-service__icon -->
+            <p class="p-service__price">
+              8,000円〜
+            </p><!-- /.p-service__price -->
+            <div class="p-service__period">
+              10営業日〜
+            </div><!-- /.p-service__period -->
+            <div class="p-service__text">
+              Wix(ホームページ制作ツール)を使用したLP制作を致します。レスポンシブ対応はもちろんのこと、価格を抑えたホームページ制作を致します。
+            </div><!-- /.p-service__text -->
+          <!--</li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              LPコーディング
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/05.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              ホームページのSEO対策
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/01.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              ECサイト構築(Shopify)
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/03.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              Webデザイン(1ページ)
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/07.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              広告運用代行
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/08.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              SNS運用代行
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/09.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>
+          <li class="p-service-list__item p-service js-service-item">
+            <h3 class="p-service__title">
+              Lステップ構築代行
+            </h3>
+            <div class="p-service__icon">
+              <img src="assets/images/top/service/10.png">
+            </div>
+            <p class="p-service__price">
+              XXX,XXX円〜
+            </p>
+            <div class="p-service__period">
+              10営業日〜
+            </div>
+            <div class="p-service__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。
+            </div>
+          </li>-->
+        </ul><!-- /.p-service-list -->
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+    <!---<section class="l-section" id="works">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>WORKS</span><br>制作実績
+        </h2>
+        <div class="p-works-tab" id="js-tab">
+          <a href="#" id="all" class="p-works-tab__item -active">
+            全て
+          </a>
+          <a href="#" id="cp" class="p-works-tab__item">
+            コーポレートサイト
+          </a>
+          <a href="#" id="lp" class="p-works-tab__item">
+            LP
+          </a>
+          <a href="#" id="ec" class="p-works-tab__item">
+            ECサイト
+          </a>
+          <a href="#" id="sy" class="p-works-tab__item">
+            Webシステム
+          </a>
+        </div>
+      //<ul class="p-works-list" id="js-works">
+          <li data-tab="cp" class="p-works-list__item p-works">
+            <a href="assets/images/top/works/works00.png" class="luminous">
+              <div class="p-works__img">
+                <img src="assets/images/top/works-thumbnail/works00.jpg" alt="">
+              </div>
+              <div class="p-works__body">
+                <h3 class="p-works__title">
+                  〇〇様コーポレートサイト
+                </h3>
+                <p class="p-works__content">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </p>
+              </div>
+            </a>
+          </li>
+          <li data-tab="lp" class="p-works-list__item p-works">
+            <a href="assets/images/top/works/works00.png" class="luminous">
+              <div class="p-works__img">
+                <img src="assets/images/top/works-thumbnail/works00.jpg" alt="">
+              </div>
+              <div class="p-works__body">
+                <h3 class="p-works__title">
+                  〇〇様LP
+                </h3>
+                <p class="p-works__content">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </p>
+              </div>
+            </a>
+          </li>
+          <li data-tab="ec" class="p-works-list__item p-works">
+            <a href="assets/images/top/works/works00.png" class="luminous">
+              <div class="p-works__img">
+                <img src="assets/images/top/works-thumbnail/works00.jpg" alt="">
+              </div>
+              <div class="p-works__body">
+                <h3 class="p-works__title">
+                  〇〇様ECサイト
+                </h3>
+                <p class="p-works__content">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </p>
+              </div>
+            </a>
+          </li>
+          <li data-tab="ec" class="p-works-list__item p-works">
+            <a href="assets/images/top/works/works00.png" class="luminous">
+              <div class="p-works__img">
+                <img src="assets/images/top/works-thumbnail/works00.jpg" alt="">
+              </div>
+              <div class="p-works__body">
+                <h3 class="p-works__title">
+                  〇〇様ECサイト
+                </h3>
+                <p class="p-works__content">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </p>
+              </div>
+            </a>
+          </li>
+          <li data-tab="sy" class="p-works-list__item p-works">
+            <a href="assets/images/top/works/works00.png" class="luminous">
+              <div class="p-works__img">
+                <img src="assets/images/top/works-thumbnail/works00.jpg" alt="">
+              </div>
+              <div class="p-works__body">
+                <h3 class="p-works__title">
+                  〇〇様Webシステム
+                </h3>
+                <p class="p-works__content">
+                  テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>-->
+    <section class="l-section" id="merit">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>MERIT</span><br>私と契約するメリット
+        </h2><!-- /.c-section-title -->
+        <ul class="p-merit-list">
+          <li class="p-merit-list__item p-merit">
+            <div class="p-merit__content">
+              <h3 class="p-merit__content__title">
+                <span>メリット1</span>
+                <span>前倒しでの迅速な納品</span>
+              </h3><!-- /.p-merit__content__title -->
+              <p class="p-merit__content__text">
+                平日はもちろん、土日祝日のご対応を行っております。納期までに完成ではなく、迅速かつ丁寧にお仕事を承ります。
+                進捗状況のご連絡徹底と、ご返信(1時間以内)対応の速度を心掛け、発注者様に不安持たせる事なくご対応致します。
+                早急なご対応の場合は、お気軽にご相談ください。
+              </p><!-- /.p-merit__content__text -->
+            </div><!-- /.p-merit__content -->
+            <div class="p-merit__img">
+              <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+            </div><!-- /.p-merit__img -->
+          </li><!-- /.p-merit-list__item p-merit -->
+          <li class="p-merit-list__item p-merit">
+            <div class="p-merit__content">
+              <h3 class="p-merit__content__title">
+                <span>メリット2</span>
+                <span>圧倒的安値な金額</span>
+              </h3><!-- /.p-merit__content__title -->
+              <p class="p-merit__content__text">
+                正直にこちらは、発注者側の方からするとデメリットがございます。それは、実績がないことです。
+                そのデメリットと引き換えとはおこがましいですが、圧倒的安価な金額でお仕事を承ります。金額以上の価値をご提供致します。
+                コンタクトを取るために、ZOOMなどで打ち合わせさせて頂ければ幸いです。
+              </p><!-- /.p-merit__content__text -->
+            </div><!-- /.p-merit__content -->
+            <div class="p-merit__img">
+              <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+            </div><!-- /.p-merit__img -->
+          </li><!-- 
+          <li class="p-merit-list__item p-merit">
+            <div class="p-merit__content">
+              <h3 class="p-merit__content__title">
+                <span>メリット3</span>
+                <span>タイトルが入ります。</span>
+              </h3>/.p-merit__content__title
+              <p class="p-merit__content__text">
+                テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。テキストが入ります。文章はダミーです。
+              </p>
+            </div>
+            <div class="p-merit__img">
+              <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+            </div>/.p-merit__img -->
+          </li><!-- /.p-merit-list__item p-merit -->
+        </ul><!-- /.p-merit-list -->
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+    <section class="l-section" id="skill">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>SKILL</span><br>スキル
+        </h2><!-- /.c-section-title -->
+        <ul class="p-skill-list">
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              HTML
+            </h3><!-- /.p-skill__title -->
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/html.png" alt="">
+            </div><!-- /.p-skill__icon -->
+          </li><!-- /.p-skill-list p-skill -->
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              CSS
+            </h3><!-- /.p-skill__title -->
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/css.png" alt="">
+            </div><!-- /.p-skill__icon -->
+          </li><!-- /.p-skill-list p-skill -->
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              JavaScript
+            </h3><!-- /.p-skill__title -->
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/javascript.png" alt="">
+            </div><!-- /.p-skill__icon -->
+          </li><!-- /.p-skill-list p-skill -->
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              jQuery
+            </h3><!-- /.p-skill__title -->
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/jquery.png" alt="">
+            </div><!-- /.p-skill__icon -->
+          </li><!--
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              PHP
+            </h3>
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/php.png" alt="">
+            </div>/.p-skill__icon -->
+          </li><!--
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              MySQL
+            </h3>
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/mysql.png" alt="">
+            </div>
+          </li>/.p-skill-list p-skill -->
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              WordPress
+            </h3><!-- /.p-skill__title -->
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/wordpress.png" alt="">
+            </div><!-- /.p-skill__icon -->
+          </li><!--
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              gulp
+            </h3>
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/gulp.png" alt="">
+            </div>
+          </li>
+          <li class="p-skill-list__item p-skill js-skill-item">
+            <h3 class="p-skill__title">
+              Webpack
+            </h3>
+            <div class="p-skill__icon">
+              <img src="assets/images/top/skill/webpack.png" alt="">
+            </div>/.p-skill__icon -->
+          </li><!-- /.p-skill-list p-skill -->
+        </ul><!-- /.p-skill-list -->
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+    <section class="l-section" id="benefits">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>BENEFITS</span><br>特典
+        </h2><!-- /.c-section-title -->
+        <ul class="p-benefits-list">
+          <li class="p-benefits-list__item p-benefits">
+            <div class="p-benefits__body">
+              <h3 class="p-benefits__title">
+                初回ご依頼時30%OFF
+              </h3><!-- /.p-benefits__title -->
+              <p class="p-benefits__text">
+                私は、現在実績がございません。発注者側からすると、不安が大きいことは承知の上です。
+                お気持ち程度ではございますか、上記の特典をおつけさせて戴きます。
+              </p><!-- /.p-benefits__text -->
+            </div><!-- /.p-benefits__body -->
+            <div class="p-benefits__img">
+              <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+            </div><!-- /.p-benefits__img -->
+          </li><!-- /.p-benefits-list__item p-benefits -->
+          <li class="p-benefits-list__item p-benefits">
+            <div class="p-benefits__body">
+              <h3 class="p-benefits__title">
+                納品後2回まで修正可能(無料)
+              </h3><!-- /.p-benefits__title -->
+              <p class="p-benefits__text">
+                私は、現在実績がございません。発注者側からすると、不安が大きいことは承知の上です。
+                お気持ち程度ではございますか、上記の特典をおつけさせて戴きます。
+              </p><!-- /.p-benefits__text -->
+            </div><!-- /.p-benefits__body -->
+            <div class="p-benefits__img">
+              <img src="assets/images/top/luca-bravo-9l_326FISzk-unsplash.jpg" alt="">
+            </div><!-- /.p-benefits__img -->
+          </li><!-- /.p-benefits-list__item p-benefits -->
+        </ul><!-- /.p-benefits-list -->
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+    <!----<section class="l-section" id="voice">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>VOICE</span><br>クライアント様の声
+        </h2>
+        <div class="p-voice-list js-voice">
+          <div class="swiper-wrapper">
+            <div class="p-voice-list__item p-voice swiper-slide">
+              <h3 class="p-voice__title">
+                LPコーディング案件
+              </h3>
+              <p class="p-voice__text">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+            <div class="p-voice-list__item p-voice swiper-slide">
+              <h3 class="p-voice__title">
+                LPコーディング案件
+              </h3>
+              <p class="p-voice__text">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+            <div class="p-voice-list__item p-voice swiper-slide">
+              <h3 class="p-voice__title">
+                LPコーディング案件
+              </h3>
+              <p class="p-voice__text">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+            <div class="p-voice-list__item p-voice swiper-slide">
+              <h3 class="p-voice__title">
+                LPコーディング案件
+              </h3>
+              <p class="p-voice__text">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>---->
+    <section class="l-section" id="about">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>ABOUT</span><br>私について
+        </h2><!-- /.c-section-title -->
+        <div class="p-about-list">
+          <div class="p-about-list__item p-about">
+            <div class="p-about__img">
+              <img src="assets/images/top/IMG_3436.JPG" alt="">
+            </div><!-- /.p-about__img -->
+            <div class="p-about__content">
+              <h3 class="p-about__title">
+                山田匠馬（やまだ　しょうま）23歳
+              </h3><!-- /.p-about__title -->
+              <p class="p-about__career">
+                住友金属鉱山株式会社(工場・電気保全課) ▶ 株式会社くすりの窓口(新規営業・課長代理) ▶ フリーランスでWeb制作
+              </p><!-- /.p-about__career -->
+              <p class="p-about__message">
+                こちらまで目を通して戴き、本当に有難うございます。最後に私の自己紹介を少し見て頂けると幸いです。
+                水の都、愛媛県西条市在中の「やまだ　しょうま」23歳です。お客様に喜ばれる’モノづくり’に惹かれWeb制作の世界へ邁進致しました。
+                趣味は、ダーツ、スケボー、カメラとアウトドアな若造です。人を笑顔にすることが得意ですが、ネタはしょうもないと評判が呼び声高いです。
+                お仕事を通じて、お客様を笑顔にすること・喜んでいただけることを目標に頑張りますので、よろしくお願い致します。
+              </p><!-- /.p-about__message -->
+              <div class="p-about__link">
+                <a href="#">Twitter(フォロワー320人)</a>
+              </div><!-- /.p-about__link -->
+            </div><!-- /.p-about__content -->
+          </div><!---
+          <div class="p-about-list__item p-about">
+            <div class="p-about__img">
+              <img src="assets/images/top/christopher-campbell-rDEOVtE7vOs-unsplash.jpg" alt="">
+            </div>
+            <div class="p-about__content">
+              <h3 class="p-about__title">
+                山田太郎（Webデザイナー）
+              </h3>
+              <p class="p-about__career">
+                テキストテキスト ▶ テキストテキスト ▶ テキストテキスト ▶ テキスト
+              </p>
+              <p class="p-about__message">
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストストテキストテキストテキストテキストストテキストテキストテキストテキスト
+              </p>
+              <div class="p-about__link">
+                <a href="#">Twitter(フォロワー1000人)</a>
+                <a href="#">YouTube(登録者100人)</a>
+              </div>/.p-about__link -->
+            </div><!-- /.p-about__content -->
+          </div><!-- /.p-about-list__item p-about -->
+        </div><!-- /.p-about-list -->
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+    <section class="l-section --bg" id="contact">
+      <div class="c-container">
+        <h2 class="c-section-title">
+          <span>CONTACT</span><br>お問い合わせ
+        </h2><!-- /.c-section-title -->
+        <form action="send.php" method="post" id="js-form" class="p-contact">
+          <label for="namae">
+            お名前(必須)
+            <span class="namae_alert" style="color: red; padding: 0; margin: 0;">※必須項目です。</span>
+            <input type="text" name="namae" id="namae"><br>
+          </label>
+          <label for="email">
+            メールアドレス(必須)
+            <span class="email_alert" style="color: red; padding: 0; margin: 0;">※必須項目です。</span>
+            <input type="email" name="email" id="email"><br>
+          </label>
+          <label for="subject">
+            件名
+            <input type="text" name="subject" id="subject"><br>
+          </label>
+          <label for="text">
+            本文
+            <textarea name="text" id="text"></textarea><br>
+          </label>
+          <label for="check">
+            <input type="checkbox" name="check" id="check"><span></span>
+            入力内容を確認しました。
+            <span class="checkbox_alert" style="color: red; padding: 0; margin: 0;">※必須項目です。</span><br>
+          </label>
+          <input type="submit" value="送信" name="submit" id="js-submit">
+        </form>
+      </div><!-- /.c-container -->
+    </section><!-- /.l-section -->
+  </main><!-- /.l-body -->
+  <footer class="l-footer">
+    <p class="p-copy">
+      &copy; 2021 SampleSite All Right Reserved.
+    </p><!-- /.p-copy -->
+  </footer><!-- /.l-footer -->
+
+  <style>
+    .lum-lightbox {
+      z-index: 999;
+    }
+    .lum-lightbox-inner {
+      overflow-y: auto;
+    }
+    .lum-lightbox-inner img {
+      max-width: 160vw !important;
+    }
+  </style>
+
+  <script src="assets/js/lib/jquery-3.5.1.min.js"></script>
+  <script src="assets/js/lib/ofi.min.js"></script>
+  <script src="assets/js/lib/Luminous.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>$(function () { objectFitImages(); });</script>
+  <script>
+    var luminousTrigger = document.querySelectorAll('.luminous');
+    if (luminousTrigger !== null) {
+      new LuminousGallery(luminousTrigger);
+    }
+  </script>
+</body>
+
+</html>
